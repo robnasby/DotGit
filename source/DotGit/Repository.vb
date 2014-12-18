@@ -69,6 +69,25 @@ Public Class Repository
 
     End Function
 
+    ''' <summary>
+    ''' Opens a Git repository.
+    ''' </summary>
+    ''' <param name="path">
+    ''' The path where the repository is located.
+    ''' </param>
+    ''' <returns>
+    ''' An instance of <see cref="Repository">Repository</see> pointing to the repository.
+    ''' </returns>
+    Public Shared Function Open(path As String) _
+                                As Repository
+
+        If Not IsValidRepository(path) Then _
+            Throw New ApplicationException(String.Format("'{0}' is not a valid repository.", path))
+
+        Return New Repository(path)
+
+    End Function
+
 #End Region
 
 #Region "Validation Methods"

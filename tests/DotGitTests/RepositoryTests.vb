@@ -28,6 +28,29 @@ Public Class RepositoryTests
 
     End Sub
 
+    <Fact>
+    Public Sub OpenEmptyDirectoryFails()
+
+        TestHelper.OnTempDirectory(
+            Sub(emptyDirectoryPath As String)
+                Assert.Throws(Of ApplicationException)(
+                    Sub()
+                        Repository.Open(emptyDirectoryPath)
+                    End Sub)
+            End Sub)
+
+    End Sub
+
+    <Fact>
+    Public Sub OpenValidRepositoryDirectorySucceeds()
+
+        TestHelper.OnPersonalRepository(
+            Sub(repo As Repository)
+                Repository.Open(repo.Path)
+            End Sub)
+
+    End Sub
+
 #End Region
 
 #Region "Validation"
