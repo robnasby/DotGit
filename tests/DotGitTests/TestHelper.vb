@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports DotGit
+Imports System.IO
 
 Friend Class TestHelper
 
@@ -53,6 +54,28 @@ Friend Class TestHelper
         For Each subDirectory As DirectoryInfo In directory.GetDirectories
             RemoveReadOnlyFromFiles(subDirectory)
         Next
+
+    End Sub
+
+    Public Shared Sub OnBareRepository(action As Action(Of Repository))
+
+        OnTempDirectory(
+            Sub(repoPath As String)
+                Dim repo As Repository = Repository.Initialize(repoPath, True)
+
+                action(repo)
+            End Sub)
+
+    End Sub
+
+    Public Shared Sub OnPersonalRepository(action As Action(Of Repository))
+
+        OnTempDirectory(
+            Sub(repoPath As String)
+                Dim repo As Repository = Repository.Initialize(repoPath)
+
+                action(repo)
+            End Sub)
 
     End Sub
 

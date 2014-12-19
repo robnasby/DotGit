@@ -6,6 +6,30 @@ Public Class RepositoryTests
 
 #Region "Tests"
 
+#Region "Creation"
+
+    <Fact>
+    Public Sub InitializeBareRepositorySucceeds()
+
+        TestHelper.OnBareRepository(
+            Sub(repo As Repository)
+                Assert.True(Repository.IsValidRepository(repo.Path))
+            End Sub)
+
+    End Sub
+
+    <Fact>
+    Public Sub InitializePersonalRepositorySucceeds()
+
+        TestHelper.OnPersonalRepository(
+            Sub(repo As Repository)
+                Assert.True(Repository.IsValidRepository(repo.Path))
+            End Sub)
+
+    End Sub
+
+#End Region
+
 #Region "Validation"
 
     <Fact>
