@@ -50,6 +50,20 @@ Namespace Internal
         End Property
 
         ''' <summary>
+        ''' The output from the command.
+        ''' </summary>
+        Public ReadOnly Property Output As String
+            Get
+                Return If(Me.OutputBuffer IsNot Nothing, Me.OutputBuffer.ToString, String.Empty)
+            End Get
+        End Property
+
+        ''' <summary>
+        ''' The buffer to accumulate the output from the command.
+        ''' </summary>
+        Private Property OutputBuffer As New StringBuilder
+
+        ''' <summary>
         ''' The path to the repository on which to execute the command.
         ''' </summary>
         Private Property RepositoryPath As String
@@ -118,11 +132,25 @@ Namespace Internal
 
             gitProcess.StartInfo.UseShellExecute = False
 
+            gitProcess.StartInfo.RedirectStandardOutput = True
+            AddHandler gitProcess.OutputDataReceived, AddressOf OutputHandler
+            gitProcess.StartInfo.RedirectStandardError = True
+            AddHandler gitProcess.ErrorDataReceived, AddressOf OutputHandler
+
             gitProcess.Start()
+            gitProcess.BeginOutputReadLine()
+            gitProcess.BeginErrorReadLine()
             Me.Status = CommandStatusOption.RUNNING
 
             gitProcess.WaitForExit()
             Me.Status = DetermineStatusFromExitCode(gitProcess.ExitCode)
+
+        End Sub
+
+        Private Sub OutputHandler(sendingProcess As Object,
+                                  output As DataReceivedEventArgs)
+
+            Me.OutputBuffer.AppendLine(output.Data)
 
         End Sub
 
