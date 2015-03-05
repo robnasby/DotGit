@@ -8,6 +8,18 @@ Public Class Repository
 #Region "Properties"
 
     ''' <summary>
+    ''' Archive operations on a repository.
+    ''' </summary>
+    Public ReadOnly Property Archive As ArchiveOperations
+        Get
+            If _Archive Is Nothing Then _Archive = New ArchiveOperations(Me)
+
+            Return _Archive
+        End Get
+    End Property
+    Private _Archive As ArchiveOperations
+
+    ''' <summary>
     ''' Commit operations on a repository.
     ''' </summary>
     Public ReadOnly Property Commit As CommitOperations
