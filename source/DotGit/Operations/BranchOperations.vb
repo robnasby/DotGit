@@ -95,6 +95,28 @@ Public Class BranchOperations
 
     End Function
 
+    ''' <summary>
+    ''' Rename a branch in a repository.
+    ''' </summary>
+    ''' <param name="oldName">
+    ''' The old name of the branch.
+    ''' </param>
+    ''' <param name="newName">
+    ''' The new name of the branch.
+    ''' </param>
+    Public Sub Rename(oldName As String,
+                      newName As String)
+
+        Dim command As New Command("branch",
+                                   commandArguments:=String.Format("-m {0} {1}", oldName, newName),
+                                   repositoryPath:=Me.Repository.Path)
+        command.Execute()
+
+        If Not command.Status = CommandStatusOption.SUCCEEDED Then _
+            Throw New ApplicationException(String.Format("Unable to rename branch '{0}' to '{1}'.", oldName, newName))
+
+    End Sub
+
 #End Region
 
 End Class

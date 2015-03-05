@@ -46,4 +46,25 @@ Public Class BranchOperationsTests
 
     End Sub
 
+    <Fact>
+    Public Sub RenameBranchSucceeds()
+
+        TestHelper.OnPersonalRepository(
+            Sub(repo As Repository)
+                repo.Index.Add(TestHelper.CreateFileInDirectory(repo.Path))
+                repo.Commit.Create("Test commit.")
+
+                Dim oldBranchName As String = "FOO"
+                repo.Branch.Create(oldBranchName, "HEAD")
+                Assert.Contains(Of String)(oldBranchName, repo.Branch.List)
+
+                Dim newBranchName As String = "BAR"
+                repo.Branch.Rename(oldBranchName, newBranchName)
+                Dim branches As IEnumerable(Of String) = repo.Branch.List
+                Assert.DoesNotContain(Of String)(oldBranchName, branches)
+                Assert.Contains(Of String)(newBranchName, branches)
+            End Sub)
+
+    End Sub
+
 End Class
