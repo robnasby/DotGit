@@ -54,6 +54,27 @@ Public Class BranchOperations
     End Sub
 
     ''' <summary>
+    ''' Delete a branch from a repository.
+    ''' </summary>
+    ''' <param name="name">
+    ''' The name of the branch to delete.
+    ''' </param>
+    ''' <param name="force">
+    ''' Force the deletion, regardless of merge status of the branch.
+    ''' </param>
+    Public Sub Delete(name As String,
+             Optional force As Boolean = False)
+
+        Dim arguments As String = If(force, String.Format("-D {0}", name), String.Format("-d {0}", name))
+        Dim command As New Command("branch", commandArguments:=arguments, repositoryPath:=Me.Repository.Path)
+        command.Execute()
+
+        If Not command.Status = CommandStatusOption.SUCCEEDED Then _
+            Throw New ApplicationException(String.Format("Unable to delete branch '{0}'.", name))
+
+    End Sub
+
+    ''' <summary>
     ''' List the local branches in a repository.
     ''' </summary>
     ''' <returns>
