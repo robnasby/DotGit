@@ -15,6 +15,32 @@ Friend Class TestHelper
 
 #Region "Methods"
 
+    Public Shared Function CreateFileInDirectory(path As String) _
+                                                 As String
+
+        Dim fileName As String = String.Format("{0}.txt", CreateRandomAlphanumericString(8))
+
+        Dim filePath As String = IO.Path.Combine(path, fileName)
+        IO.File.WriteAllText(filePath, CreateRandomAlphanumericString(64))
+
+        Return fileName
+
+    End Function
+
+    Public Shared Function CreateFilesInDirectory(path As String,
+                                                  count As Integer) _
+                                            As IEnumerable(Of String)
+
+        Dim fileNames As New List(Of String)
+
+        For i As Integer = 1 To count
+            fileNames.Add(CreateFileInDirectory(path))
+        Next
+
+        Return fileNames
+
+    End Function
+
     Private Shared Function CreateRandomAlphanumericString(length As Integer) _
                                                           As String
 
