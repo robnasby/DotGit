@@ -43,6 +43,16 @@ Public Class Repository
     End Property
     Private _Commit As CommitOperations
 
+
+    Public ReadOnly Property Config As ConfigOperations
+        Get
+            If _Config Is Nothing Then _Config = New ConfigOperations(Me)
+
+            Return _Config
+        End Get
+    End Property
+    Private _Config As ConfigOperations
+
     ''' <summary>
     ''' Index operation on a repository.
     ''' </summary>

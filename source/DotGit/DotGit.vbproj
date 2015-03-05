@@ -84,6 +84,7 @@
     <Compile Include="Operations\ArchiveOperations.vb" />
     <Compile Include="Operations\BranchOperations.vb" />
     <Compile Include="Operations\CommitOperations.vb" />
+    <Compile Include="Operations\ConfigOperations.vb" />
     <Compile Include="Operations\IndexOperations.vb" />
     <Compile Include="Repository.vb" />
   </ItemGroup>
