@@ -81,6 +81,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Operations\CommitOperations.vb" />
     <Compile Include="Operations\IndexOperations.vb" />
     <Compile Include="Repository.vb" />
   </ItemGroup>

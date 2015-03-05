@@ -8,6 +8,18 @@ Public Class Repository
 #Region "Properties"
 
     ''' <summary>
+    ''' Commit operations on a repository.
+    ''' </summary>
+    Public ReadOnly Property Commit As CommitOperations
+        Get
+            If _Commit Is Nothing Then _Commit = New CommitOperations(Me)
+
+            Return _Commit
+        End Get
+    End Property
+    Private _Commit As CommitOperations
+
+    ''' <summary>
     ''' Index operation on a repository.
     ''' </summary>
     Public ReadOnly Property Index As IndexOperations
