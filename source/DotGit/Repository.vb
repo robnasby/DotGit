@@ -8,6 +8,18 @@ Public Class Repository
 #Region "Properties"
 
     ''' <summary>
+    ''' Index operation on a repository.
+    ''' </summary>
+    Public ReadOnly Property Index As IndexOperations
+        Get
+            If _Index Is Nothing Then _Index = New IndexOperations(Me)
+
+            Return _Index
+        End Get
+    End Property
+    Private _Index As IndexOperations
+
+    ''' <summary>
     ''' The path where the repository is located.
     ''' </summary>
     Public Property Path As String
