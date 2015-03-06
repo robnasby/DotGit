@@ -20,6 +20,18 @@ Public Class Repository
     Private _Archive As ArchiveOperations
 
     ''' <summary>
+    ''' Branch operations on a repository.
+    ''' </summary>
+    Public ReadOnly Property Branch As BranchOperations
+        Get
+            If _Branch Is Nothing Then _Branch = New BranchOperations(Me)
+
+            Return _Branch
+        End Get
+    End Property
+    Private _Branch As BranchOperations
+
+    ''' <summary>
     ''' Commit operations on a repository.
     ''' </summary>
     Public ReadOnly Property Commit As CommitOperations

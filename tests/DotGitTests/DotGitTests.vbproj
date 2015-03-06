@@ -92,6 +92,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Operations\ArchiveOperationsTests.vb" />
+    <Compile Include="Operations\BranchOperationsTests.vb" />
     <Compile Include="Operations\CommitOperationsTests.vb" />
     <Compile Include="Operations\IndexOperationsTests.vb" />
     <Compile Include="RepositoryTests.vb" />
