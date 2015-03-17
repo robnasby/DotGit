@@ -67,8 +67,9 @@
     <Compile Include="Git.vb" />
     <Compile Include="Internal\Command.vb" />
     <Compile Include="Internal\CommandStatusOption.vb" />
-    <Compile Include="Internal\ConfigGroupAttribute.vb" />
-    <Compile Include="Internal\ConfigValueAttribute.vb" />
+    <Compile Include="Internal\ConfigurationEntry.vb" />
+    <Compile Include="Internal\ConfigurationGroupAttribute.vb" />
+    <Compile Include="Internal\ConfigurationValueAttribute.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

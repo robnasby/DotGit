@@ -1,7 +1,7 @@
 ﻿Namespace Internal
 
     <AttributeUsage(AttributeTargets.Property)>
-    Public Class ConfigGroupAttribute
+    Public Class ConfigurationValueAttribute
         Inherits Attribute
 
     End Class
