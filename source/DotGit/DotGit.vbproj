@@ -63,9 +63,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.vb" />
     <Compile Include="Git.vb" />
     <Compile Include="Internal\Command.vb" />
     <Compile Include="Internal\CommandStatusOption.vb" />
+    <Compile Include="Internal\ConfigGroupAttribute.vb" />
+    <Compile Include="Internal\ConfigValueAttribute.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
