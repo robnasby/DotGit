@@ -63,6 +63,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Git.vb" />
     <Compile Include="Internal\Command.vb" />
     <Compile Include="Internal\CommandStatusOption.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

@@ -113,7 +113,7 @@ Namespace Internal
 
             Dim gitProcess As New Process()
 
-            gitProcess.StartInfo.FileName = "git"
+            gitProcess.StartInfo.FileName = Git.ExecutablePath
             gitProcess.StartInfo.Arguments = String.Format("{0} {1} {2}", Me.GitArguments, Me.Command, Me.CommandArguments)
 
             gitProcess.StartInfo.UseShellExecute = False
