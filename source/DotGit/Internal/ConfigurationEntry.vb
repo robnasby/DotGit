@@ -41,6 +41,15 @@
 
         End Function
 
+        Public Overrides Function ToString() As String
+
+            Return String.Format("{0}.{1}={2}",
+                                 Me.Group,
+                                 Me.Name,
+                                 Me.Value)
+
+        End Function
+
 #End Region
 
     End Class

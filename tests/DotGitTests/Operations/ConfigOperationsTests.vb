@@ -13,4 +13,13 @@ Public Class ConfigOperationsTests
 
     End Sub
 
+    Public Sub SetAllRepositoryConfigurationSucceeds()
+
+        TestHelper.OnBareRepository(
+            Sub(repo As Repository)
+                Dim config As New Configuration
+            End Sub)
+
+    End Sub
+
 End Class
